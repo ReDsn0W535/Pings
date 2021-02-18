@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/overviewFragment"
+    android:id="@id/overview_flow">
+
+    <fragment
+        android:id="@+id/overviewFragment"
+        android:name="com.production.overview.OverviewFragment">
+        <action
+            android:id="@+id/action_overviewFragment_to_nextFragment"
+            app:destination="@id/nextFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nextFragment"
+        android:name="com.production.overview.NextFragment" />
+</navigation>

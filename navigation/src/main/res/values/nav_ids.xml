@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="start_flow" type="id" />
+    <item name="overview_flow" type="id" />
+    <item name="settings_flow" type="id" />
+</resources>

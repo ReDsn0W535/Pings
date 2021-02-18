@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_flow"
+    app:startDestination="@id/start_flow">
+
+    <include app:graph="@navigation/start_flow" />
+
+    <include app:graph="@navigation/settings_flow" />
+
+    <include app:graph="@navigation/overview_flow" />
+
+    <action
+        android:id="@+id/action_global_settings_flow"
+        app:destination="@id/settings_flow"
+        app:popUpTo="@id/main_flow"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim" />
+
+    <action
+        android:id="@+id/action_global_overview_flow"
+        app:popUpTo="@id/main_flow"
+        app:destination="@id/overview_flow"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim" />
+</navigation>
