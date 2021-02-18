@@ -6,7 +6,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:4.2.0-beta04")
+        classpath("com.android.tools.build:gradle:4.1.0")
         classpath(kotlin("gradle-plugin", version = kotlinVersion))
         classpath("com.google.gms:google-services:4.3.5")
         classpath(Navigation.navSafeArgsPlugin)
