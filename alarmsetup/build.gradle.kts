@@ -43,6 +43,7 @@ android {
 dependencies {
     implementation(project(":framework"))
     implementation(project(":navigation"))
+    implementation(project(":commonui"))
 
     implementation(kotlin("stdlib", KotlinCompilerVersion.VERSION))
     implementation(Core.core)
@@ -50,11 +51,11 @@ dependencies {
     implementation(Design.material)
     implementation(Navigation.navFragment)
     implementation(Navigation.navUi)
-
-    // Feature module Support
-    implementation(Navigation.navDynamicFeature)
-
+    implementation(Coroutines.core)
+    implementation(Coroutines.android)
     implementation(DI.hilt)
+    implementation(DI.hiltViewModel)
+    implementation(Timber)
     testImplementation(Test.junit)
     androidTestImplementation(Test.junitExt)
     androidTestImplementation(Test.espresso)

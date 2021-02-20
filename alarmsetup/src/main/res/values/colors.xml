@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="emperor_100">#4F4F4F</color>
+    <color name="emperor_50">#804F4F4F</color>
+    <color name="emperor_25">#1A4F4F4F</color>
+    <color name="emperor_0">#004F4F4F</color>
+    <color name="black_10">#1A000000</color>
+</resources>

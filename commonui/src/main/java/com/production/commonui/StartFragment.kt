@@ -19,6 +19,10 @@ class StartFragment : BaseFragment<StartFragmentBinding>(R.layout.start_fragment
         binding.button2.setOnClickListener {
             (requireActivity() as ToFlowNavigatable).navigateToFlow(NavigationFlow.DashboardFlow)
         }
+        binding.button3.setOnClickListener {
+            (requireActivity() as ToFlowNavigatable).navigateToFlow(NavigationFlow.AddAlarmFlow)
+
+        }
     }
 
 }

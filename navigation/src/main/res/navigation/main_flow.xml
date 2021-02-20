@@ -10,10 +10,12 @@
 
     <include app:graph="@navigation/overview_flow" />
 
+    <include app:graph="@navigation/add_alarm_flow" />
+
     <action
         android:id="@+id/action_global_settings_flow"
-        app:destination="@id/settings_flow"
         app:popUpTo="@id/main_flow"
+        app:destination="@id/settings_flow"
         app:enterAnim="@anim/nav_default_enter_anim"
         app:exitAnim="@anim/nav_default_exit_anim" />
 
@@ -21,6 +23,13 @@
         android:id="@+id/action_global_overview_flow"
         app:popUpTo="@id/main_flow"
         app:destination="@id/overview_flow"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim" />
+
+    <action
+        android:id="@+id/action_global_add_alarm_flow"
+        app:popUpTo="@id/main_flow"
+        app:destination="@id/add_alarm_flow"
         app:enterAnim="@anim/nav_default_enter_anim"
         app:exitAnim="@anim/nav_default_exit_anim" />
 </navigation>

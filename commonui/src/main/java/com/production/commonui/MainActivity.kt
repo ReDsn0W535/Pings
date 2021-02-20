@@ -7,7 +7,9 @@ import androidx.navigation.fragment.NavHostFragment
 import com.production.navigation.NavigationFlow
 import com.production.navigation.Navigator
 import com.production.navigation.ToFlowNavigatable
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), ToFlowNavigatable {
     private val navigator: Navigator = Navigator()
 

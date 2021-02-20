@@ -8,5 +8,6 @@ class Navigator {
     fun navigateToFlow(navigationFlow: NavigationFlow) = when (navigationFlow) {
         NavigationFlow.SettingsFlow -> navController.navigate(MainFlowDirections.actionGlobalSettingsFlow())
         NavigationFlow.DashboardFlow -> navController.navigate(MainFlowDirections.actionGlobalOverviewFlow())
+        NavigationFlow.AddAlarmFlow -> navController.navigate(MainFlowDirections.actionGlobalAddAlarmFlow())
     }
 }

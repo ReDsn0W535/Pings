@@ -3,8 +3,10 @@ import org.jetbrains.kotlin.config.KotlinCompilerVersion
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id("com.google.gms.google-services")
+    id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
+    id("dagger.hilt.android.plugin")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -46,6 +48,7 @@ dependencies {
     implementation(project(":commonui"))
     implementation(project(":settings"))
     implementation(project(":overview"))
+    implementation(project(":alarmsetup"))
 
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation(kotlin("stdlib", KotlinCompilerVersion.VERSION))
@@ -53,7 +56,11 @@ dependencies {
     implementation(Design.appCompat)
     implementation(Design.material)
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
+    implementation(Timber)
+    implementation(DI.hilt)
     testImplementation(Test.junit)
     androidTestImplementation(Test.junitExt)
     androidTestImplementation(Test.espresso)
+
+    kapt(DI.hiltKapt)
 }

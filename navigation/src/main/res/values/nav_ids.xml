@@ -3,4 +3,5 @@
     <item name="start_flow" type="id" />
     <item name="overview_flow" type="id" />
     <item name="settings_flow" type="id" />
+    <item name="add_alarm_flow" type="id" />
 </resources>
