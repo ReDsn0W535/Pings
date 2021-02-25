@@ -2,10 +2,12 @@ package com.production.alarmsetup.presentation
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearSnapHelper
 import com.production.alarmsetup.R
 import com.production.alarmsetup.databinding.AddAlarmFragmentBinding
+import com.production.alarmsetup.presentation.timepicker.Orientation
 import com.production.alarmsetup.presentation.timepicker.TimePickerAdapter
 import com.production.alarmsetup.presentation.timepicker.TimePickerScrollListener
 import com.production.framework.fragment.BaseFragment
@@ -22,16 +24,22 @@ class AddAlarmFragment : BaseFragment<AddAlarmFragmentBinding>(R.layout.add_alar
         val hoursSnapHelper = LinearSnapHelper()
         val hoursPickerScrollListener = TimePickerScrollListener(hoursSnapHelper)
         binding.hoursPicker.adapter =
-            TimePickerAdapter(resources.getStringArray(R.array.hours).toList(), hoursPickerScrollListener.snapFlow)
-        binding.hoursPicker.layoutManager?.scrollToPosition(Integer.MAX_VALUE / 2);
+            TimePickerAdapter(resources.getStringArray(R.array.hours).toList(),
+                hoursPickerScrollListener.snapFlow,
+                Orientation.END)
+        binding.hoursPicker.layoutManager?.scrollToPosition(Integer.MAX_VALUE / 2)
         hoursSnapHelper.attachToRecyclerView(binding.hoursPicker)
         binding.hoursPicker.addOnScrollListener(hoursPickerScrollListener)
         val minutesSnapHelper = LinearSnapHelper()
         val minutesPickerScrollListener = TimePickerScrollListener(minutesSnapHelper)
         binding.minutesPicker.adapter = TimePickerAdapter(resources.getStringArray(R.array.minutes).toList(),
-            minutesPickerScrollListener.snapFlow)
+            minutesPickerScrollListener.snapFlow, Orientation.START)
         binding.minutesPicker.layoutManager?.scrollToPosition(Integer.MAX_VALUE / 2)
         minutesSnapHelper.attachToRecyclerView(binding.minutesPicker)
         binding.minutesPicker.addOnScrollListener(minutesPickerScrollListener)
+
+        binding.labelButton.setOnClickListener {
+            Toast.makeText(requireContext(), "labelButton clicked", Toast.LENGTH_SHORT).show()
+        }
     }
 }
