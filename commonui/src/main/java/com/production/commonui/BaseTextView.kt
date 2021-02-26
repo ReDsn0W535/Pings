@@ -11,7 +11,7 @@ class BaseTextView @JvmOverloads constructor(
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
         val measuredWidth = measuredWidth
-        val tenPercentOfMeasuredWidth = measuredWidth * 0.025f
+        val tenPercentOfMeasuredWidth = measuredWidth * 0.1f
         val newWidth = measuredWidth + tenPercentOfMeasuredWidth.toInt()
 
         setMeasuredDimension(newWidth, measuredHeight)
