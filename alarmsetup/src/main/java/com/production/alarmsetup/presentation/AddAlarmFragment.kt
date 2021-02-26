@@ -2,10 +2,9 @@ package com.production.alarmsetup.presentation
 
 import android.os.Bundle
 import android.view.View
-import android.view.ViewTreeObserver
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearSnapHelper
 import com.production.alarmsetup.R
 import com.production.alarmsetup.databinding.AddAlarmFragmentBinding
@@ -13,9 +12,10 @@ import com.production.alarmsetup.presentation.timepicker.Orientation
 import com.production.alarmsetup.presentation.timepicker.TimePickerAdapter
 import com.production.alarmsetup.presentation.timepicker.TimePickerScrollListener
 import com.production.framework.fragment.BaseFragment
-import com.production.framework.recyclerview.getSnapPosition
 import com.production.framework.viewbinding.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+
 
 @AndroidEntryPoint
 class AddAlarmFragment : BaseFragment<AddAlarmFragmentBinding>(R.layout.add_alarm_fragment) {
@@ -27,29 +27,38 @@ class AddAlarmFragment : BaseFragment<AddAlarmFragmentBinding>(R.layout.add_alar
         val hoursSnapHelper = LinearSnapHelper()
         val hoursPickerScrollListener = TimePickerScrollListener(hoursSnapHelper)
         binding.hoursPicker.adapter =
-            TimePickerAdapter(resources.getStringArray(R.array.hours).toList(),
+            TimePickerAdapter(
+                resources.getStringArray(R.array.hours).toList(),
                 hoursPickerScrollListener.snapFlow,
-                Orientation.END)
-        hoursSnapHelper.attachToRecyclerView(binding.hoursPicker)
+                Orientation.END
+            )
+        binding.hoursPicker.layoutManager?.scrollToPosition(Int.MAX_VALUE / 2)
         binding.hoursPicker.addOnScrollListener(hoursPickerScrollListener)
-        binding.hoursPicker.viewTreeObserver.addOnGlobalLayoutListener(object :
-            ViewTreeObserver.OnGlobalLayoutListener {
-            override fun onGlobalLayout() {
-                binding.hoursPicker.scrollToPosition(Integer.MAX_VALUE / 2)
-                binding.hoursPicker.viewTreeObserver.removeOnGlobalLayoutListener(this)
-            }
-        })
+        hoursSnapHelper.attachToRecyclerView(binding.hoursPicker)
 
         val minutesSnapHelper = LinearSnapHelper()
         val minutesPickerScrollListener = TimePickerScrollListener(minutesSnapHelper)
-        binding.minutesPicker.adapter = TimePickerAdapter(resources.getStringArray(R.array.minutes).toList(),
-            minutesPickerScrollListener.snapFlow, Orientation.START)
-        binding.minutesPicker.layoutManager?.scrollToPosition(Integer.MAX_VALUE / 2)
-        minutesSnapHelper.attachToRecyclerView(binding.minutesPicker)
+        binding.minutesPicker.adapter =
+            TimePickerAdapter(
+                resources.getStringArray(R.array.minutes).toList(),
+                minutesPickerScrollListener.snapFlow,
+                Orientation.START
+            )
+        binding.minutesPicker.layoutManager?.scrollToPosition(Int.MAX_VALUE / 2)
         binding.minutesPicker.addOnScrollListener(minutesPickerScrollListener)
+        minutesSnapHelper.attachToRecyclerView(binding.minutesPicker)
 
         binding.labelButton.setOnClickListener {
             Toast.makeText(requireContext(), "labelButton clicked", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        lifecycleScope.launchWhenResumed {
+            delay(100)
+            binding.minutesPicker.smoothScrollBy(0, 500)
+            binding.hoursPicker.smoothScrollBy(0, -500)
         }
     }
 }

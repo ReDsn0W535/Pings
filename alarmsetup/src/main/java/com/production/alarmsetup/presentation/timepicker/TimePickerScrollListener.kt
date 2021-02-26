@@ -7,6 +7,7 @@ import androidx.core.view.get
 import androidx.core.view.size
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_IDLE
 import androidx.recyclerview.widget.SnapHelper
 import com.production.alarmsetup.R
 import com.production.framework.recyclerview.getSnapPosition
