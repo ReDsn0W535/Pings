@@ -36,7 +36,7 @@ fun Context.sp(value: Number): Int {
     }
 }
 
-fun Context.dp(value: Number): Int {
+fun Context.dpToPx(value: Number): Int {
     val fValue = value.toFloat()
     return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, fValue, resources.displayMetrics).roundToInt()
 }

@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.config.KotlinCompilerVersion
-
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -51,13 +49,14 @@ dependencies {
     implementation(project(":alarmsetup"))
 
     implementation("com.google.firebase:firebase-analytics-ktx")
-    implementation(kotlin("stdlib", KotlinCompilerVersion.VERSION))
+    implementation(kotlin("stdlib", Versions.kotlin))
     implementation(Core.core)
     implementation(Design.appCompat)
     implementation(Design.material)
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation(Timber)
     implementation(DI.hilt)
+    implementation(Coil)
     testImplementation(Test.junit)
     androidTestImplementation(Test.junitExt)
     androidTestImplementation(Test.espresso)

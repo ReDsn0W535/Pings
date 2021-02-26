@@ -10,29 +10,40 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="12dp"
-        tools:listitem="@layout/time_picker_view"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/repeat_button"
+        app:layout_constraintBottom_toTopOf="@id/custom_date_button"
         app:layout_constraintEnd_toStartOf="@+id/minutesPicker"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/time_picker_view" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/minutesPicker"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="12dp"
-        tools:listitem="@layout/time_picker_view"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/repeat_button"
+        app:layout_constraintBottom_toTopOf="@id/custom_date_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/hoursPicker"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:listitem="@layout/time_picker_view" />
 
+    <com.production.commonui.BaseElement
+        android:id="@+id/custom_date_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="12dp"
+        android:text="@string/custom_date"
+        app:additionalText="@string/off"
+        app:icon="@drawable/arrow_icon"
+        app:layout_constraintBottom_toTopOf="@id/repeat_button" />
 
     <com.production.commonui.BaseElement
         android:id="@+id/repeat_button"
@@ -42,6 +53,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="12dp"
         android:text="@string/repeat"
+        app:additionalText="@string/once"
         app:icon="@drawable/arrow_icon"
         app:layout_constraintBottom_toTopOf="@id/people_button" />
 
@@ -62,9 +74,20 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="31dp"
         android:text="@string/label"
+        android:layout_marginBottom="12dp"
         app:icon="@drawable/cross_icon_black"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toTopOf="@id/custom_ringtone_button" />
 
+    <com.production.commonui.BaseElement
+        android:id="@+id/custom_ringtone_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="31dp"
+        android:text="@string/ringtone"
+        app:additionalText="@string/def_rington"
+        app:icon="@drawable/arrow_icon"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

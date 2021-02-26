@@ -14,22 +14,28 @@
 
     <action
         android:id="@+id/action_global_settings_flow"
-        app:popUpTo="@id/main_flow"
         app:destination="@id/settings_flow"
-        app:enterAnim="@anim/nav_default_enter_anim"
-        app:exitAnim="@anim/nav_default_exit_anim" />
+        app:enterAnim="@anim/slide_enter"
+        app:exitAnim="@anim/slide_exit"
+        app:popEnterAnim="@anim/slide_pop_enter"
+        app:popExitAnim="@anim/slide_pop_exit"
+        app:popUpTo="@id/main_flow" />
 
     <action
         android:id="@+id/action_global_overview_flow"
-        app:popUpTo="@id/main_flow"
         app:destination="@id/overview_flow"
-        app:enterAnim="@anim/nav_default_enter_anim"
-        app:exitAnim="@anim/nav_default_exit_anim" />
+        app:enterAnim="@anim/slide_enter"
+        app:exitAnim="@anim/slide_exit"
+        app:popEnterAnim="@anim/slide_pop_enter"
+        app:popExitAnim="@anim/slide_pop_exit"
+        app:popUpTo="@id/main_flow" />
 
     <action
         android:id="@+id/action_global_add_alarm_flow"
-        app:popUpTo="@id/main_flow"
         app:destination="@id/add_alarm_flow"
-        app:enterAnim="@anim/nav_default_enter_anim"
-        app:exitAnim="@anim/nav_default_exit_anim" />
+        app:enterAnim="@anim/slide_enter"
+        app:exitAnim="@anim/slide_exit"
+        app:popEnterAnim="@anim/slide_pop_enter"
+        app:popExitAnim="@anim/slide_pop_exit"
+        app:popUpTo="@id/main_flow" />
 </navigation>

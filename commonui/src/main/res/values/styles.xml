@@ -6,6 +6,12 @@
         <item name="android:lineSpacingExtra">6dp</item>
     </style>
 
+    <style name="TextAppearanceButtonLight">
+        <item name="android:fontFamily">@font/ubuntu_light_italic</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:lineSpacingExtra">6dp</item>
+    </style>
+
     <style name="BaseElementContainerStyle">
         <item name="android:background">@drawable/base_element_ripple</item>
     </style>

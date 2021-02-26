@@ -2,8 +2,10 @@ package com.production.alarmsetup.presentation
 
 import android.os.Bundle
 import android.view.View
+import android.view.ViewTreeObserver
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import com.production.alarmsetup.R
 import com.production.alarmsetup.databinding.AddAlarmFragmentBinding
@@ -11,6 +13,7 @@ import com.production.alarmsetup.presentation.timepicker.Orientation
 import com.production.alarmsetup.presentation.timepicker.TimePickerAdapter
 import com.production.alarmsetup.presentation.timepicker.TimePickerScrollListener
 import com.production.framework.fragment.BaseFragment
+import com.production.framework.recyclerview.getSnapPosition
 import com.production.framework.viewbinding.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,9 +30,16 @@ class AddAlarmFragment : BaseFragment<AddAlarmFragmentBinding>(R.layout.add_alar
             TimePickerAdapter(resources.getStringArray(R.array.hours).toList(),
                 hoursPickerScrollListener.snapFlow,
                 Orientation.END)
-        binding.hoursPicker.layoutManager?.scrollToPosition(Integer.MAX_VALUE / 2)
         hoursSnapHelper.attachToRecyclerView(binding.hoursPicker)
         binding.hoursPicker.addOnScrollListener(hoursPickerScrollListener)
+        binding.hoursPicker.viewTreeObserver.addOnGlobalLayoutListener(object :
+            ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                binding.hoursPicker.scrollToPosition(Integer.MAX_VALUE / 2)
+                binding.hoursPicker.viewTreeObserver.removeOnGlobalLayoutListener(this)
+            }
+        })
+
         val minutesSnapHelper = LinearSnapHelper()
         val minutesPickerScrollListener = TimePickerScrollListener(minutesSnapHelper)
         binding.minutesPicker.adapter = TimePickerAdapter(resources.getStringArray(R.array.minutes).toList(),

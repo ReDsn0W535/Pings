@@ -2,5 +2,12 @@
 <resources>
     <declare-styleable name="BaseElement">
         <attr name="mainText" format="string"/>
+        <attr name="additionalText" format="string"/>
+        <attr name="size" format="enum">
+            <enum name="big" value="0" />
+            <enum name="small" value="1" />
+        </attr>
+
     </declare-styleable>
+    <attr name="textAppearanceButtonItalic" format="reference" />
 </resources>

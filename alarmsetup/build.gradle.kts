@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.config.KotlinCompilerVersion
-
 plugins {
     id("com.android.library")
     id("kotlin-android")
@@ -45,7 +43,7 @@ dependencies {
     implementation(project(":navigation"))
     implementation(project(":commonui"))
 
-    implementation(kotlin("stdlib", KotlinCompilerVersion.VERSION))
+    implementation(kotlin("stdlib", Versions.kotlin))
     implementation(Core.core)
     implementation(Design.appCompat)
     implementation(Design.material)
@@ -56,6 +54,7 @@ dependencies {
     implementation(DI.hilt)
     implementation(DI.hiltViewModel)
     implementation(Timber)
+    implementation(Coil)
     testImplementation(Test.junit)
     androidTestImplementation(Test.junitExt)
     androidTestImplementation(Test.espresso)

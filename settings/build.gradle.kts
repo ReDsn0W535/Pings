@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.config.KotlinCompilerVersion
-
 plugins {
     id("com.android.library")
     id("kotlin-android")
@@ -42,7 +40,7 @@ dependencies {
     implementation(project(":framework"))
     implementation(project(":navigation"))
 
-    implementation(kotlin("stdlib", KotlinCompilerVersion.VERSION))
+    implementation(kotlin("stdlib", Versions.kotlin))
     implementation(Core.core)
     implementation(Design.appCompat)
     implementation(Design.material)

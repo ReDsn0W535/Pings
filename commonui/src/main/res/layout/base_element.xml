@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    tools:background="@color/white"
     tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
     <com.google.android.material.textview.MaterialTextView
@@ -11,21 +12,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginBottom="29dp"
         android:text="mainText"
         android:textAllCaps="false"
-        app:layout_constraintStart_toStartOf="parent"
         android:textAppearance="?attr/textAppearanceButton"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="MainText"
+        tools:textAppearance="@style/TextAppearanceButton" />
+
+    <com.production.commonui.BaseTextView
+        android:id="@+id/additionalText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:textAllCaps="false"
+        android:textAppearance="?attr/textAppearanceButtonItalic"
+        app:layout_constraintBottom_toBottomOf="@+id/mainText"
+        app:layout_constraintEnd_toStartOf="@+id/icon"
+        app:layout_constraintTop_toTopOf="@+id/mainText"
+        tools:text="Info"
+        tools:textAppearance="@style/TextAppearanceButtonLight" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/mainText"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:foregroundGravity="center"
         android:layout_marginEnd="30dp"
-        app:layout_constraintTop_toTopOf="@+id/mainText" />
+        android:cropToPadding="true"
+        app:layout_constraintBottom_toBottomOf="@+id/additionalText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/additionalText"
+        tools:src="@drawable/cross_icon_black" />
 </merge>

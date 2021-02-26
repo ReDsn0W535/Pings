@@ -12,6 +12,8 @@ object Versions {
     const val retrofit = "2.5.0"
     const val coroutines = "1.4.2"
     const val timber = "4.7.1"
+    const val coil = "1.1.1"
+    const val kotlin = "1.4.30"
 }
 
 object Navigation {
@@ -53,7 +55,8 @@ object Retrofit {
     const val rxAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
 }
 
-val Timber = "com.jakewharton.timber:timber:${Versions.timber}"
+const val Timber = "com.jakewharton.timber:timber:${Versions.timber}"
+const val Coil = "io.coil-kt:coil:${Versions.coil}"
 
 object Test {
     const val junit = "junit:junit:${Versions.junit}"

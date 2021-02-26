@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.config.KotlinCompilerVersion
-
 plugins {
     id("com.android.library")
     id("kotlin-android")
@@ -44,7 +42,7 @@ dependencies {
     implementation(project(":framework"))
     implementation(project(":navigation"))
 
-    implementation(kotlin("stdlib", KotlinCompilerVersion.VERSION))
+    implementation(kotlin("stdlib", Versions.kotlin))
     implementation(Core.core)
     implementation(Design.appCompat)
     implementation(Design.material)
@@ -54,6 +52,8 @@ dependencies {
     // Feature module Support
     implementation(Navigation.navDynamicFeature)
 
+    implementation(Timber)
+    implementation(Coil)
     implementation(DI.hilt)
     testImplementation(Test.junit)
     androidTestImplementation(Test.junitExt)
