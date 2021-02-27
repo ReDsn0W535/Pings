@@ -1,33 +1,43 @@
-package com.production.commonui
+package com.production.commonui.baseElement
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
-import coil.load
+import com.production.commonui.R
 import com.production.commonui.databinding.BaseElementBinding
 import com.production.framework.ui.dpToPx
-import com.production.framework.ui.drawable
+import kotlinx.coroutines.channels.BufferOverflow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
 
-class BaseElement @JvmOverloads constructor(
+abstract class BaseElement<T : View> @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
+    abstract val payloadView: T
 
-    private enum class Size {
-        BIG, SMALL
+    protected val binding = BaseElementBinding.inflate(LayoutInflater.from(context), this)
+
+    protected val endElementLayoutParams: ViewGroup.LayoutParams = binding.icon.layoutParams
+
+    protected val _state = MutableSharedFlow<Boolean>(
+        replay = 1,
+        onBufferOverflow = BufferOverflow.DROP_OLDEST
+    ).also {
+        it.tryEmit(false)
     }
 
-    private val defaultAttrsSet = intArrayOf(
+    protected val defaultAttrsSet = intArrayOf(
         R.attr.colorPrimary,
+        R.attr.boxColor,
         android.R.attr.text,
         R.attr.icon,
     )
-    private var binding = BaseElementBinding.inflate(LayoutInflater.from(context), this)
-
     var additionalText: String = ""
         set(value) {
             if (field == value)
@@ -37,6 +47,8 @@ class BaseElement @JvmOverloads constructor(
             else binding.additionalText.isVisible = false
             field = value
         }
+
+    val state = _state.distinctUntilChanged()
 
     init {
         this.apply {
@@ -48,15 +60,6 @@ class BaseElement @JvmOverloads constructor(
             context.obtainStyledAttributes(attrs, defaultAttrsSet).apply {
                 getString(defaultAttrsSet.indexOf(android.R.attr.text))?.let {
                     binding.mainText.text = it
-                }
-                getResourceId(defaultAttrsSet.indexOf(R.attr.icon), R.drawable.cross_icon_black).let {
-                    context.drawable(it)?.let { image ->
-                        val layoutParams: ViewGroup.LayoutParams = binding.icon.layoutParams
-                        layoutParams.width = image.minimumWidth
-                        layoutParams.height = image.minimumHeight
-                        binding.icon.layoutParams = layoutParams
-                        binding.icon.load(image)
-                    }
                 }
                 recycle()
             }
@@ -78,5 +81,9 @@ class BaseElement @JvmOverloads constructor(
                 }
             }
         }
+    }
+
+    private enum class Size {
+        BIG, SMALL
     }
 }

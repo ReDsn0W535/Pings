@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/time_picker_view" />
 
-    <com.production.commonui.BaseElement
+    <com.production.commonui.baseElement.ImageElement
         android:id="@+id/custom_date_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,10 +42,10 @@
         android:layout_marginBottom="12dp"
         android:text="@string/custom_date"
         app:additionalText="@string/off"
-        app:icon="@drawable/arrow_icon"
+        app:iconSource="@drawable/arrow_icon"
         app:layout_constraintBottom_toTopOf="@id/repeat_button" />
 
-    <com.production.commonui.BaseElement
+    <com.production.commonui.baseElement.ImageElement
         android:id="@+id/repeat_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,10 +54,10 @@
         android:layout_marginBottom="12dp"
         android:text="@string/repeat"
         app:additionalText="@string/once"
-        app:icon="@drawable/arrow_icon"
+        app:iconSource="@drawable/arrow_icon"
         app:layout_constraintBottom_toTopOf="@id/people_button" />
 
-    <com.production.commonui.BaseElement
+    <com.production.commonui.baseElement.ImageElement
         android:id="@+id/people_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -65,10 +65,10 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="12dp"
         android:text="@string/people"
-        app:icon="@drawable/cross_icon_black"
+        app:iconSource="@drawable/cross_icon_black"
         app:layout_constraintBottom_toTopOf="@id/label_button" />
 
-    <com.production.commonui.BaseElement
+    <com.production.commonui.baseElement.ImageElement
         android:id="@+id/label_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -76,10 +76,11 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="12dp"
         android:text="@string/label"
-        app:icon="@drawable/cross_icon_black"
+        app:size="big"
+        app:iconSource="@drawable/cross_icon_black"
         app:layout_constraintBottom_toTopOf="@id/custom_ringtone_button" />
 
-    <com.production.commonui.BaseElement
+    <com.production.commonui.baseElement.ImageElement
         android:id="@+id/custom_ringtone_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -88,6 +89,7 @@
         android:layout_marginBottom="31dp"
         android:text="@string/ringtone"
         app:additionalText="@string/def_rington"
-        app:icon="@drawable/arrow_icon"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:iconSource="@drawable/arrow_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:size="big"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

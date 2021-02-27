@@ -7,7 +7,12 @@
             <enum name="big" value="0" />
             <enum name="small" value="1" />
         </attr>
-
+    </declare-styleable>
+    <declare-styleable name="ImageElement" parent="BaseElement">
+        <attr name="iconSource" format="reference"/>
     </declare-styleable>
     <attr name="textAppearanceButtonItalic" format="reference" />
+    <attr name="colorRipple" format="color"/>
+    <attr name="boxColor" format="color"/>
+    <attr name="baseTextAppearance" format="reference"/>
 </resources>
